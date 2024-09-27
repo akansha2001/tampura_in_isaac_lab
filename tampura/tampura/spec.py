@@ -128,7 +128,8 @@ class ProblemSpec:
                             stream_sampled_inputs[sampler.name].append(input_sym)
                             if None not in store.get_all(input_sym):
                                 logging.info(f"Sampling {sampler}({input_sym})")
-                                output = sampler.sample_fn(input_sym, store=store)
+                                # output = sampler.sample_fn(input_sym, store=store)
+                                output, store = sampler.sample_fn(input_sym, store) # NEW
                                 output_object = store.add_typed(output, sampler.output_type)
                                 merged_dict = {k: v for k, v in zip(sampler.inputs, input_sym)} | {
                                     sampler.output: output_object
