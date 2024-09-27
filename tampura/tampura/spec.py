@@ -129,11 +129,12 @@ class ProblemSpec:
                             if None not in store.get_all(input_sym):
                                 logging.info(f"Sampling {sampler}({input_sym})")
                                 # output = sampler.sample_fn(input_sym, store=store)
-                                output, store = sampler.sample_fn(input_sym, store) # NEW
-                                output_object = store.add_typed(output, sampler.output_type)
-                                merged_dict = {k: v for k, v in zip(sampler.inputs, input_sym)} | {
-                                    sampler.output: output_object
-                                }
+                                output, store = sampler.sample_fn(input_sym, store) # output is a tuple
+                                for o in output:
+                                    output_object = store.add_typed(o, sampler.output_type)
+                                    merged_dict = {k: v for k, v in zip(sampler.inputs, input_sym)} | {
+                                        sampler.output: output_object
+                                    }
                                 for fact in sampler.certified:
                                     args = [merged_dict[q] for q in fact.args]
                                     store.certified.append(Atom(fact.pred_name, args))
