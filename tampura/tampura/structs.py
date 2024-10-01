@@ -167,8 +167,8 @@ class StreamSchema:
     name: str = "default"
     inputs: List[str] = field(default_factory=lambda: [])
     input_types: List[str] = field(default_factory=lambda: [])
-    output: Tuple[str] = field(default_factory=lambda: ())
-    output_type: Tuple[str] = field(default_factory=lambda: ())
+    output: List[str] = field(default_factory=lambda: [])
+    output_type: List[str] = field(default_factory=lambda: [])
     preconditions: List[Any] = field(default_factory=lambda: [])
     certified: List[Any] = field(default_factory=lambda: [])
     sample_fn: Callable[[List[str], AliasStore], Tuple[List[str], AliasStore]] = None
