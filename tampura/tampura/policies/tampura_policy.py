@@ -153,7 +153,7 @@ class TampuraPolicy(Policy):
             if sol.policy[ab] in applicable_actions:
                 selected_action = sol.policy[ab]
             else:
-                logging.warn(
+                logging.warning(
                     f"WARNING: Taking a random action because {str(sol.policy[ab])} is not feasible."
                 )
                 selected_action = random.choice(applicable_actions)
