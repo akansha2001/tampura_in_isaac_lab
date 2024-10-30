@@ -1,0 +1,33 @@
+(define (domain generated)
+  (:requirements :strips :typing)
+  (:types physical location - object)
+  (:predicates
+    (located ?physical0 - physical)
+    (at ?physical0 - physical ?location0 - location)
+    (eq ?o1 - object ?o2 - object)
+    (goal )
+  )
+  (:action pick_cm_0
+    :parameters (?o1 - physical)
+    :precondition (and (located ?o1) (not (goal)))
+    :effect (and (not (at ?o1 loc_rob)) (increase (total-cost) 2))
+  )
+  (:action pick_cm_1
+    :parameters (?o1 - physical)
+    :precondition (and (located ?o1) (not (goal)))
+    :effect (and (at ?o1 loc_rob) (increase (total-cost) 2))
+  )
+  (:action place_cm_0
+    :parameters (?o1 - physical ?loc_o1 - location)
+    :precondition (and (at ?o1 loc_rob) (not (goal)))
+    :effect (and (not (at ?o1 ?loc_o1)) (increase (total-cost) 2))
+  )
+  (:action place_cm_1
+    :parameters (?o1 - physical ?loc_o1 - location)
+    :precondition (and (at ?o1 loc_rob) (not (goal)))
+    :effect (and (at ?o1 ?loc_o1) (increase (total-cost) 2))
+  )
+  (:derived (goal)
+     (and (at o_o1 goal_loc_o_o1))
+  )
+)
