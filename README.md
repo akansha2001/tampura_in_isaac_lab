@@ -1,11 +1,13 @@
 # TAMPURA in IsaacLab
 
-## Changes made to TAMPURA code
+## Main contributions
 
-Changed `spec.py` to handle multiple outputs (for loop with `store.add_typed()`) and `store`.
+`class_uncertainty.ipynb`: determine the class of different objects, pick and place all objects of a certain class in some goal location.
 
-Changed `structs.py` to define `output`, `output_type` as `Tuple`s for hashing.
+`search_object.ipynb`: look for an object in a cluttered environment
 
-### grasping_env2.ipynb
-
-A simple modification has been introduced to deal with preconditions and make use of streams. The action checks if the object has been located, a guaranteed effect of the "locate" stream, which additionally checks if the location is reachable by the robot and updates the store accordingly in the sample function for the stream. 
+## TODO:
+1. Rearrange directory structure
+2. Include `IsaacLab` in repository with demos
+3. Improve `README.md`
+4. Fix directory structure
